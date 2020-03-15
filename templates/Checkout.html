@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Checkout</title>
+    {% block head %}
+    <!-- Required meta tags always come first -->
+    {% comment %} <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Checkout - One Step Checkout , Responsive Bootstrap 4 template , bootstrap 4 starter template, bootstrap4 template, checkout template">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" lang="en" content="Checkout Bootstrap 4 pricing template , Responsive and Modern HTML5 Template made from bootstrap 4.">
+    <meta name="keywords" lang="en" content="pricing template, bootstrap 4 template,bootstrap 4 checkout template, responsive bootstrap 4 template, bootstrap 4, bootstraping, bootstrap4, oribitthemes">
+    <meta name="robots" content="index, follow">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <meta name="description" content=""> {% endcomment %}
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="{% static 'Checkout/dist/font-awesome/css/font-awesome.min.css' %}" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Checkout/css/main.min.css' %}">
+    <!--[if IE]>
+      <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/g/html5shiv@3.7.3"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie8.min.css" rel="stylesheet">
+    <![endif]-->
+
+	{% endblock %}
+</head>
+
+<body class="animsition" onload="resetSelection()">
+	{% block body %}
+
+	<!-- Title Page -->
+ <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url('/static/images/shop-1.gif');">
+		<h2 class="l-text2 t-center" style="color:#00ACC1;">
+			CHECKOUT
+		</h2>
+	</section>
+        <section id="checkout-container">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-md-4 order-md-2 mb-4">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">Your cart</span>
+                            <span class="badge badge-secondary badge-pill">{{ carts.count }}</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                        {% for cart in carts%}
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">{{ cart.item.BookName }}</h6>
+                                    <small class="text-muted">{{ cart.quantity}} X {{ cart.item.BookPrice }}</small>
+                                </div>
+                                <span class="text-muted"><b>₹. </b>{{ cart.get_total }}</span>
+                            </li>
+                        {% endfor %}
+                         <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <span class="p-l-70"><b>Grand Total :</b>   ₹.{{ order.get_totals }}</span>
+                        </li>
+                        </ul>
+            
+                    </div>
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="mb-3"></h4>
+                        <form class="needs-validation"  method="POST" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">Billing First name</label>
+                                    <input type="text" class="form-control" name="Billingfirst" id="firstName" placeholder="Billing FirstName" value="" required>
+                                 
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" class="form-control" name="Billinglast" id="lastName" placeholder="Billing LastName" value="" required>
+                                 
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" name="firstaddress" id="address" placeholder="1234 Main St" required>
+                                
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address2">Address 2
+                                    <span class="text-muted">(Optional)</span>
+                                </label>
+                                <input type="text" class="form-control" name="secondaddress"  id="address2" placeholder="Apartment or suite">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="country">State</label>
+                                    {% comment %} <select  id="country" required>
+                                        <option value="">Choose...</option>
+                                        <option>United States</option>
+                                    </select> {% endcomment %}
+                                    <select id="countrySelect"  name="state" size="1" onchange="makeSubmenu(this.value)" class="custom-select d-block w-100">
+                                    <option value="" disabled selected>Choose State</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="state">City</label>
+                                    <select id="citySelect" size="1"  name="city" class="custom-select d-block w-100" onchange= "getcity(this.value)">
+                                    <option value="" disabled selected>Choose City</option>
+                                    <option></option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="zip">PinCode</label>
+                                    <input type="text" class="form-control" name="pincode" id="zip" placeholder="ex. 360005" required>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                            </div>
+                            <div class="row">
+                            </div>
+                            <hr class="mb-4">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                                <i class="fa fa-credit-card"></i> Continue to checkout</button>
+                                
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Footer -->
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="{% static 'Checkout/dist/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Checkout/dist/popper/popper.min.js' %}" integrity=""></script>
+    <script src="{% static 'Checkout/dist/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Checkout/js/main.min.js' %}"></script>
+
+
+    {% comment %} dropdown for state and city {% endcomment %}
+    <script type="text/javascript">
+var citiesByState = {
+Odisha: ["Bhubaneswar","Puri","Cuttack"],
+Maharashtra: ["Mumbai","Pune","Nagpur"],
+Kerala: ["kochi","Kanpur"],
+Gujarat:["Rajkot","Ahmedabad","Baroda","Morbi","Surat", "Jamnagar"],
+}
+function makeSubmenu(value) {
+if(value.length==0) document.getElementById("citySelect").innerHTML = "<option></option>";
+else {
+var citiesOptions = "";
+for(cityId in citiesByState[value]) {
+citiesOptions+="<option value='"+citiesByState[value][cityId]+"'>"+citiesByState[value][cityId]+"</option>";
+}
+document.getElementById("citySelect").innerHTML = citiesOptions;
+}
+}
+function displaySelected() { var country = document.getElementById("countrySelect").value;
+var city = document.getElementById("citySelect").value;
+alert(country+"\n"+city);
+}
+function resetSelection() {
+document.getElementById("countrySelect").selectedIndex = 0;
+document.getElementById("citySelect").selectedIndex = 0;
+}
+</script>
+
+
+    {% endblock %}
+</body>
+
+</html>

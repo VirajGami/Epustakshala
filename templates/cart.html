@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block head %}
+	{% endblock %}
+</head>
+<body class="animsition">
+	{% block body %}
+
+	<!-- Title Page -->
+ <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url('/static/images/cart1.jpg');">
+		<h2 class="l-text2 t-center">
+			Cart
+		</h2>
+	</section>
+
+	<!-- Cart -->
+	<section class="cart bgwhite p-t-70">
+		<div class="container">
+			<!-- Cart item -->
+			<div class="container-table-cart pos-relative">
+				<div class="wrap-table-shopping-cart bgwhite m-b-50">
+					<table class="table-shopping-cart">
+						<tr class="table-head">
+							<th class="column-1"></th>
+							<th class="column-2">Product</th>
+							<th class="column-3">Price(<b>₹.</b>)</th>
+							<th class="column-4 p-l-70">Quantity</th>
+							<th class="column-5">Total(<b>₹.</b>)</th>
+						</tr>
+					
+						{% for cart in carts %}
+
+						<tr class="table-row">
+							<td class="column-1">
+							<a href="#">
+								<a href="{% url 'Cart:remove_from_cart' cart.item.id %}"><div class="cart-img-product b-rad-4 o-f-hidden">
+									<img src="{{ cart.item.BookImage }}" alt="IMG-PRODUCT">
+								</div></a>
+							</a>
+							</td>
+							<td class="column-2">{{ cart.item.BookName }}</td>
+							<td class="column-3">{{ cart.item.BookPrice }}</td>
+							<td class="column-4">
+								<div class="flex-w bo5 of-hidden w-size17 m-l-38">
+
+								
+									<a href="{% url 'Cart:decreaseCart' cart.item.id %}"><span class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+									</span></a>
+
+									<input class="size8 m-text18 t-center num-product" type="number" name="num-product2" value="{{ cart.quantity }}" disabled style="background:white;">
+									{% if cart.item.BookStock <= 0 %}
+									<span class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+									</span>
+									{% else %}
+										{% if cart.item.BookStock <= 0 %}
+						
+										{% else%}
+									<a href="{% url 'Cart:add_to_cart' cart.item.id %}"><span class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+									</span></a>
+										{% endif %}
+									{% endif %}
+								</div>
+							</td>
+							<td class="column-5">{{ cart.get_total }}</td>
+						</tr>
+						{% endfor %}
+							<tr class="table-row">
+								<td class="column-1 p-r-20" colspan="5" align="right">
+								<b>Grand Total : </b>{{ order.get_totals }}
+								</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+				<a href="{% url 'Cart:Checkout'  %}"><span class="flex-c-m size2 bg4 bo-rad-23 hov1 s-text1 trans-0-4 m-b-40">Checkout</span></a>
+		</div>
+
+			
+
+
+
+	{% endblock %}
+</body>
+</html>

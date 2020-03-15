@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+<style>
+    .gallery-wrap .img-big-wrap img {
+    height: 450px;
+    width: auto;
+    display: inline-block;
+    cursor: zoom-in;
+}
+
+
+.gallery-wrap .img-small-wrap .item-gallery {
+    width: 60px;
+    height: 60px;
+    margin: 7px 2px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.gallery-wrap .img-small-wrap {
+    text-align: center;
+}
+.gallery-wrap .img-small-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+}
+.BookImage {
+    margin-left:11%;
+    margin-top:25px;
+}
+.card{
+    border:none;
+}
+
+.container{
+  width:70%;
+}
+.quantity{
+  float:right
+}
+</style>
+
+</head>
+<body>
+ 
+
+<div class="container">
+	<br>  <p class="text-center">Product Details </a></p>
+<hr>
+
+	
+<div class="card">
+	<div class="row">
+		<aside class="col-sm-5">
+<article class="gallery-wrap"> 
+<div class="img-big-wrap">
+  <div class="BookImage"><img src="{{ Books.BookImage }}"></div>
+</div> <!-- slider-product.// -->
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		<aside class="col-sm-7">
+<article class="card-body p-5">
+	<h3 class="title mb-3">{{ Books.BookName }}</h3>
+
+<p class="price-detail-wrap"> 
+	<span class="price h3 text-warning"> 
+		<span class="currency" >IND ₹.{{ Books.BookPrice }}</span><span class="num"></span>
+	</span> 
+</p> <!-- price-detail-wrap .// -->
+<dl class="item-property">
+  <dt>Description</dt>
+  <dd><p> {{Books.BookDesc }} </p></dd>
+</dl>
+<dl class="param param-feature">
+  <dt>Author:</dt>
+  <dd>{{ Books.Author }}</dd>
+</dl>  
+<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			<dl class="param param-inline">
+			  <dt>Quantity: </dt>
+			  <dd>
+          <select class="form-control form-control-sm" style="width:70px;">
+            {% for i in "123456789" %}
+        <option> {{i}}</option>
+            {% endfor %}
+          </select>
+        </dd>
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+ <!-- col.// -->
+
+ <div class="col-sm-5">
+  <dl class="param param-inline">
+    <dt>Available Quantity:</dt>
+    <dd>
+       {{ Books.BookStock }}
+    </dd>
+  </dl>  <!-- item-property .// -->
+</div> <!-- col.// -->
+<!-- col.// -->
+	</div> <!-- row.// -->
+	<hr>
+	<a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
+	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+</article> <!-- card-body.// -->
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+
+
+</div>
+<!--container.//-->
+
+</article>
+</body>
+</html>

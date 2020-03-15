@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<title>E-Pustakshala</title>
+	<script type="text/javascript" src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'invoice/invoice.css'%}" media="all" />
+	<script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'vendor/sweetalert/sweetalert.min.js' %}"></script>
+		
+</head>
+<body class="animsition">
+	<header class="clearfix">
+      <div id="logo">
+        <img src="{% static 'images/icons/logo.jpg' %}">
+      </div>
+      <div id="company">
+        <h2 class="name">E-Pustakshala</h2>
+        <div>1202, The Spire Complex, 
+		<br>150 Feet Ring Road, Rajkot - 360005,</div>
+        <div> Nr. Ayodhya Chowk</div>
+        <div><a>Nevilbavarva477@gmail.com</a></div>
+      </div>
+      </div>
+    </header>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">INVOICE TO:</div>
+          <h2 class="name">{{ Customer.BillingFirstName|capfirst }} {{ Customer.BillingLastName}}</h2>
+          <div class="address">{{ Customer.CustomerAddress }}, {{ Customer.CustomerCity}}, {{ Customer.CustomerState }}</div>
+          <div class="email"><a>{{ Customer.CustomerEmail}}</a></div>
+        </div>
+        <div id="invoice">
+       
+          <div class="date">Date of Invoice:{% now "SHORT_DATE_FORMAT" %}</div>
+      
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th class="no">No.</th>
+            <th class="desc">DESCRIPTION</th>
+            <th class="unit">UNIT PRICE</th>
+            <th class="qty">QUANTITY</th>
+            <th class="total">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+        {% for cart in carts  %}  
+        <tr>
+            <td class="no">{{ forloop.counter }}</td>
+            <td class="desc"><h3>{{ cart.item.BookName }}</h3>{{ cart.item.Author }}</td>
+            <td class="unit"><b>₹.</b>{{ cart.item.BookPrice }}</td>
+            <td class="qty">{{ cart.quantity}}</td>
+            <td class="total"><b>₹.</b>{{  cart.get_total }}</td>
+          </tr>
+         
+        {% endfor %}
+        
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">GRAND TOTAL</td>
+            <td><b>₹.</b>{{ order.get_totals }}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+							
+								
+                                <div class="block2-btn-add w-size1 trans-0-4">
+										{% comment %} <input type="Button" id='gamete' value="submit" class="btn btn-primary btn-sm" onclick="hii()"> {% endcomment %}
+                                        <!-- Button -->
+                    <a href="{% url 'MainIndex:index' %}" class="previous">&laquo; Back To Home</a>
+									</div>						
+	<script type="text/javascript">
+		$(document).ready(function(){
+				swal("Congrats", "Order Placed successfully", "success");
+		});
+    </script> 	
+    {% for cart in carts%}
+       <span style="display:none;">{{cart.cart_delete}}</span>
+    {% endfor %}					
+</body>
+</html>

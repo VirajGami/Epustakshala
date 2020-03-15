@@ -1,0 +1,478 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>E-Pustakshala</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- =============================================================================================== -->
+            <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'fonts/themify/themify-icons.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'fonts/elegant-font/html-css/style.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/lightbox2/css/lightbox.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <!--===============================================================================================-->
+			{% comment %} search bar {% endcomment %}
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!--===============================================================================================-->
+	<style>
+	 body {
+     background: #e8eaed
+ }
+ #searchform {
+	 border-radius:30px;
+	 margin-right:5px;
+	 border:1.5px solid #C2C2C2;
+	 margin-top:1px;
+	 
+
+ }
+ .searchbar {
+     position: relative;
+     min-width: 30.5px;
+     width: 0%;
+     height: 30.5px;
+     float: right;
+     overflow: hidden;
+     -webkit-transition: width 0.3s;
+     -moz-transition: width 0.3s;
+     -ms-transition: width 0.3s;
+     -o-transition: width 0.3s;
+     transition: width 0.3s
+ }
+
+ .searchbar-input {
+     top: 0;
+     right: 0;
+     border: 0;
+     outline: 0;
+     background: white;
+     width: 100%;
+     height: 27.5px;
+     margin: 0;
+     padding: 0px 55px 0px 20px;
+     font-size: 15px;
+     color: black;
+ }
+
+ .searchbar-input::-webkit-input-placeholder {
+     color: #fff
+ }
+
+ .searchbar-input:-moz-placeholder {
+     color: #fff
+ }
+
+ .searchbar-input::-moz-placeholder {
+     color: #fff
+ }
+
+ .searchbar-icon,
+ .searchbar-submit {
+     width: 30.5px;
+     height: 30.5px;
+     position: absolute;
+     top: 0;
+     font-family: verdana;
+     font-size: 16px;
+     right: -1px;
+     padding: 0;
+     border: 0;
+     outline: 0;
+     line-height: 25px;
+     text-align: center;
+     cursor: pointer;
+     color: #B0AFAF;
+     background: white;
+     border-left: 1px solid white
+ }
+
+ .searchbar-open {
+     width: 80%
+ }	
+ 
+	</style>
+	<script>
+	 $(document).ready(function(){
+ var submitIcon = $('.searchbar-icon');
+ var inputBox = $('.searchbar-input');
+ var searchbar = $('.searchbar');
+ var isOpen = false;
+ submitIcon.click(function(){
+ if(isOpen == false){
+ searchbar.addClass('searchbar-open');
+ inputBox.focus();
+ isOpen = true;
+ } else {
+ searchbar.removeClass('searchbar-open');
+ inputBox.focusout();
+ isOpen = false;
+ }
+ });
+ submitIcon.mouseup(function(){
+ return false;
+ });
+ searchbar.mouseup(function(){
+ return false;
+ });
+ $(document).mouseup(function(){
+ if(isOpen == true){
+ $('.searchbar-icon').css('display','block');
+ submitIcon.click();
+ }
+ });
+ });
+ function buttonUp(){
+ var inputVal = $('.searchbar-input').val();
+ inputVal = $.trim(inputVal).length;
+ if( inputVal !== 0){
+ $('.searchbar-icon').css('display','none');
+ } else {
+ $('.searchbar-input').val('');
+ $('.searchbar-icon').css('display','block');
+ }
+ }
+	</script>
+			
+</head>
+<body>
+    <header class="header1">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+			
+
+			<div class="wrap_header" >
+				<div class="">
+					<span  class="logo" style="margin-left: 0px;">
+						<img src="{% static 'images/logo.jpg' %}" alt="IMG" style="height:70px; margin-left: 0px;  ">
+					</span>
+					</div>
+				<!-- Logo -->
+				
+
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
+							<li class="noti">
+								<a href="{% url 'MainIndex:index' %}" width="150px">Home</a>
+							</li>
+							<li>
+							<a href="{% url 'MainIndex:allBooks' %}">Books</a>
+							</li>
+							<li class="noti">
+								<a href="{% url 'MainIndex:About' %}">About</a>
+							</li>
+
+							<li class="noti">
+								<a href="{% url 'MainIndex:contact' %}">Contact</a>
+							</li>
+							
+						</ul>
+					</nav>
+				</div>
+
+				<!-- Header Icon -->
+				<div class="header-icons">
+					<div class="searchcontainer">
+    					<form class="searchbar" id="searchform"> <input type="search" placeholder="Search here" name="Bookname" class="searchbar-input" onkeyup="button	Up();" required> <input type="submit" class="searchbar-submit" value=""> <span class="searchbar-icon"><i class="fa fa-search" aria-hidden="true"></i></span> </form>
+					</div>
+					<span class="linedivide1"></span>
+
+					{% comment %} login condition  {% endcomment %}
+					{% comment %}  {% endcomment %}
+					{% comment %}  {% endcomment %}
+					{% if Customer_session_nm is not None %}
+						<div class="btn-group">
+						<button type="button" style="color:#00ACC1 ;">{{ name }}</button>
+						<button type="button" class=" dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+						</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="{% url 'Registration:Logout' %}" style="color:#00ACC1 ;" >Logout</a>
+						</div>
+						</div>
+
+						<span class="linedivide1"></span>
+
+					<div class="header-wrapicon2">
+						<img src="{% static 'images/icons/icon-header-02.png' %}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+						{% comment %} {% with  total=request.session['total'] %} {% endcomment %}
+						{% if carts is not None %}
+						<span class="header-icons-noti">{{ carts.count }}</span>
+						{% else %}
+						<span class="header-icons-noti">0</span>
+						{% endif %}
+						<!-- Header cart noti -->
+						<div class="header-cart header-dropdown">
+							<ul class="header-cart-wrapitem">
+								{% for cart in carts %}
+								<li class="header-cart-item">
+									<a href="{% url 'Cart:remove_from_cart' cart.item.id %}"><div class="header-cart-item-img">
+										<img src="{{ cart.item.BookImage }}" alt="IMG">
+									</div></a>
+
+									<div class="header-cart-item-txt">
+										<a href="#" class="header-cart-item-name">
+											{{ cart.item.BookName }}
+										</a>
+
+										<span class="header-cart-item-info">
+											{{ cart.quantity }} x {{ cart.item.BookPrice}}
+										</span>
+									</div>
+								</li>
+								{% endfor %}
+							</ul>
+
+							<div class="header-cart-total">
+								Total: <b>₹.</b>{{ order.get_totals }}
+							</div>
+
+							<div class="header-cart-buttons">
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="{% url 'Cart:CartView' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										View Cart
+									</a>
+								</div>
+
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="{% url 'Cart:Checkout' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										Check Out
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+					{% else %}
+					<a href="{% url 'Registration:Login' %}" class="header-wrapicon1 dis-block">
+						<img src="{% static 'images/icons/icon-header-01.png' %}" class="header-icon1" alt="ICON">
+					</a>
+					{% endif %}
+		
+	</header>
+   
+    {% block body %}
+    {% endblock %}
+
+    <!-- footer   area -->
+
+    <!-- Footer -->
+	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
+		<div class="flex-w p-b-90">
+			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+				<h4 class="s-text12 p-b-30">
+					GET IN TOUCH
+				</h4>
+
+				<div>
+					<p class="s-text7 w-size27">
+						Connect with us via Social Media.
+					</p>
+
+					<div class="flex-m p-t-30">
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Categories
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:CategoryView' id=1%}" class="s-text7">
+							Novels
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:CategoryView' id=2 %}" class="s-text7">
+							Biographies
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:CategoryView' id=3 %}" class="s-text7">
+							Mysteries
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:CategoryView' id=4 %}" class="s-text7">
+							Historical
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Pages
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:index' %}" class="s-text7">
+							Home
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:About' %}" class="s-text7">
+							About Us
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:contact' %}" class="s-text7">
+							Contact Us
+						</a>
+					</li>
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:allBooks' %}" class="s-text7">
+							All Books
+						</a>
+					</li>
+					<li class="p-b-9">
+						<a href="{% url 'Cart:CartView' %}" class="s-text7">
+							Cart
+						</a>
+					</li>
+
+				</ul>
+			</div>
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Special Editions
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:got' %}" class="s-text7">
+							Game of Thrones
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:hp' %}" class="s-text7">
+							Harry Potter Series
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="{% url 'MainIndex:tw' %}" class="s-text7">
+							Twilight Series
+						</a>
+					</li>
+					
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="t-center p-l-15 p-r-15">
+
+			<div class="t-center s-text8">
+				Copyright © 2020 All rights reserved. By <a href="#">E-pustakshala</a> </div>
+		</div>
+	</footer>
+
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+	</div>
+
+	<!-- Container Selection1 -->
+	<div id="dropDownSelect1"></div>
+
+
+	<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap" rel="stylesheet">
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/select2/select2.min.js' %}"></script>
+	<script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/slick/slick.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/slick-custom.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/lightbox2/js/lightbox.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/sweetalert/sweetalert.min.js' %}"></script>
+	<script type="text/javascript">
+		 {% comment %} $('.block2-btn-add').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal( "Order Placed successfully !", "success");
+			});
+		});  {% endcomment %}
+{% comment %} 
+		 $('.block2-btn-addwishlist').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(Order Placed successfully", "success");
+			});
+		}); {% endcomment %}
+	</script>
+
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+<!--===============================modal============================================================-->
+
+
+</body>
+</html>

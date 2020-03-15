@@ -1,0 +1,1 @@
+web: gunicorn Pustakshala.wsgi
