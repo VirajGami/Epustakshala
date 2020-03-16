@@ -4,7 +4,7 @@ from MainIndex.views import *
 app_name = 'MainIndex'
 
 urlpatterns = [
-    path('Home/',views.index, name="index"),
+    path('/',views.index, name="index"),
     path('contact/', views.contact , name="contact"),
     path('Category/<int:id>', views.CategoryView , name="CategoryView"),
     path('Publication/<int:id>', views.PublicationView , name="PublicationView"),
