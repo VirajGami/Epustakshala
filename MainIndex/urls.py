@@ -10,13 +10,13 @@ urlpatterns = [
     path('Publication/<int:id>', views.PublicationView , name="PublicationView"),
     path('Author/<int:id>', views.AuthorView , name="AuthorView"),
     path('Search/', views.SearchView , name="SearchView"),
-    path('/Details/<int:id>', views.DetailsView , name="DetailsView"),
+    path('Details/<int:id>', views.DetailsView , name="DetailsView"),
     path('Contact',views.contact,name="contact"),
-    path('Home/About' , views.About , name="About"),
-    path('/gameofthrones', views.got , name="got"),
-    path('/HarryPotter' , views.hp , name="hp"),
-    path('/Twilight' , views.tw , name="tw"),
-    path('/AllBooks' , views.allBooks , name="allBooks"),
+    path('About' , views.About , name="About"),
+    path('gameofthrones', views.got , name="got"),
+    path('HarryPotter' , views.hp , name="hp"),
+    path('Twilight' , views.tw , name="tw"),
+    path('AllBooks' , views.allBooks , name="allBooks"),
     
 
 ]
