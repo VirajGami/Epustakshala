@@ -326,9 +326,10 @@ def sendbill(email):
 
     # Create the enclosing (outer) message
     outer = MIMEMultipart()
-    outer['Subject'] = ' E-Pustakshala (Order Placed) -- Check the Invoice copy. Visit : e-pustakshala.herokuapp.com/contact for any query'
+    outer['Subject'] = ' E-Pustakshala (Order Placed)'
     outer['To'] = COMMASPACE.join(recipients)
     outer['From'] = sender
+    outer['body'] = '\n Visit : e-pustakshala.herokuapp.com/contact for any query'
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
     # List of attachments
