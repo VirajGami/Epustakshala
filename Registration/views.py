@@ -138,7 +138,7 @@ def sendmail(CustomerEmail , CustomerName):
     name = CustomerName
 
     subject ='Registration'
-    body= 'Dear ' + str(name) +' ,'+ '\n Thanks for you Registration in E-Pustakshala. Your account has been successfully created.'
+    body= 'Dear ' + str(name) +' ,'+ '\n Thanks for you Registration in E-Pustakshala. Your account has been successfully created. \n Visit : e-pustakshala.herokuapp.com/contact for any query'
 
     msg=f"subject:{subject}\n\n{body}"
 
