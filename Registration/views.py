@@ -40,7 +40,7 @@ def Login(request):
             return redirect('Registration:cust_login1')
         else:
            
-            return render(request,'LoginRegister/login.html',{})
+            return render(request,'LoginRegister/Login.html',{})
     return render(request,'LoginRegister/Login.html',{})
 
 # 

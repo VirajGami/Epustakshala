@@ -157,10 +157,10 @@ def AuthorView(request, id):
         order = None
         carts = None
     Books= Book.objects.all()
-    bname=request.GET.get('Bookname')
-    if bname!='' and bname is not None:
-        Books=Books.filter(BookName__icontains= bname)
-        return render(request,'ShowSearch.html',{'Books':Books, 'Customer_session_nm':Customer_session_nm ,  'order':order , 'carts':carts , 'name':Customer.objects.get(id=user).CustomerName.capitalize()})   
+    # bname=request.GET.get('Bookname')
+    # if bname!='' and bname is not None:
+    #     Books=Books.filter(BookName__icontains= bname)
+    #     return render(request,'ShowSearch.html',{'Books':Books, 'Customer_session_nm':Customer_session_nm ,  'order':order , 'carts':carts , 'name':Customer.objects.get(id=user).CustomerName.capitalize()})   
     AuthorValue = Author.objects.get(id=id)
     Books = Book.objects.filter(Author=AuthorValue)
     Name = Author.objects.get(id=id).AuthorName
@@ -176,8 +176,8 @@ def AuthorView(request, id):
             return render(request,'ShowSearch.html',{'Books':Books})
     if request.session.has_key('name'):
         Customer_session_nm=request.session['name']
-        return render(request, 'showAuthor.html', {'Books':Books, 'Name':Name,'desc':desc , 'Customer_session_nm':Customer_session_nm ,  'order':order , 'carts':carts , 'name':Customer.objects.get(id=user).CustomerName.capitalize()})   
-    return render(request, 'showAuthor.html', {'Books':Books, 'Name':Name,'desc':desc })    
+        return render(request, 'ShowAuthor.html', {'Books':Books, 'Name':Name,'desc':desc , 'Customer_session_nm':Customer_session_nm ,  'order':order , 'carts':carts , 'name':Customer.objects.get(id=user).CustomerName.capitalize()})   
+    return render(request, 'ShowAuthor.html', {'Books':Books, 'Name':Name,'desc':desc })    
 
 
 def SearchView(request):
