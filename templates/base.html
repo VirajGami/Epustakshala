@@ -287,7 +287,7 @@
 					</a>
 					{% endif %}
 						
-	{% comment %}<div class="wrap_header_mobile">
+<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
 			<a href="index.html" class="logo-mobile">
 				<img src="images/icons/logo.png" alt="IMG-LOGO">
@@ -311,7 +311,7 @@
 
 					<div class="header-wrapicon2">
 						<img src="{% static 'images/icons/icon-header-02.png' %}" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						{% with  total=request.session['total'] %} 
+					
 						{% if carts is not None %}
 						<span class="header-icons-noti">{{ carts.count }}</span>
 						{% else %}
@@ -406,7 +406,7 @@
 				</ul>
 			</nav>
 		</div>
-	</div>{% comment %}
+	</div>
 		
 	</header>
    
