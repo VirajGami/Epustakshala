@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- =============================================================================================== -->
-            <link rel="icon" type="image/png" href="{% static 'images/icons/title_logo.png' %}"/>
+            <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
         <!--===============================================================================================-->
             <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
         <!--===============================================================================================-->
@@ -287,7 +287,7 @@
 					</a>
 					{% endif %}
 						
-	<div class="wrap_header_mobile">
+	{% comment %}<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
 			<a href="index.html" class="logo-mobile">
 				<img src="images/icons/logo.png" alt="IMG-LOGO">
@@ -406,7 +406,7 @@
 				</ul>
 			</nav>
 		</div>
-	</div>
+	</div>{% comment %}
 		
 	</header>
    
