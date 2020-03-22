@@ -281,76 +281,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="wrap_header_mobile">
-			<!-- Logo moblie -->
-			<a href="index.html" class="logo-mobile">
-				<img src="images/icons/logo.png" alt="IMG-LOGO">
-			</a>
-
-			<!-- Button show menu -->
-			<div class="btn-show-menu">
-				<!-- Header Icon mobile -->
-				<div class="header-icons-mobile">
-					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="images/icons/logo.png" class="header-icon1" alt="ICON">
-					</a>
-
-					<span class="linedivide2"></span>
-
-					<div class="header-wrapicon2">
-						<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-					{% if carts is not None %}
-						<span class="header-icons-noti">{{ carts.count }}</span>
-						{% else %}
-						<span class="header-icons-noti">0</span>
-						{% endif %}
-
-						<!-- Header cart noti -->
-						<div class="header-cart header-dropdown">
-							<ul class="header-cart-wrapitem">
-								{% for cart in carts %}
-								<li class="header-cart-item">
-									<a href="{% url 'Cart:remove_from_cart' cart.item.id %}"><div class="header-cart-item-img">
-										<img src="{{ cart.item.BookImage }}" alt="IMG">
-									</div></a>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											{{ cart.item.BookName }}
-										</a>
-
-										<span class="header-cart-item-info">
-											{{ cart.quantity }} x {{ cart.item.BookPrice}}
-										</span>
-									</div>
-								</li>
-								{% endfor %}
-							</ul>
-
-								<div class="header-cart-total">
-								Total: <b>₹.</b>{{ order.get_totals }}
-							</div>
-
-							<div class="header-cart-buttons">
-								<div class="header-cart-wrapbtn">
-									<!-- Button -->
-									<a href="{% url 'Cart:CartView' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										View Cart
-									</a>
-								</div>
-
-								<div class="header-cart-wrapbtn">
-									<!-- Button -->
-									<a href="{% url 'Cart:Checkout' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Check Out
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				
+		
 					{% else %}
 
 
