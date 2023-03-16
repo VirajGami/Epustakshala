@@ -129,16 +129,16 @@ def sendmail(CustomerEmail , CustomerName):
     server.starttls()
     server.ehlo()
     server.login('nevilbavarva477@gmail.com','tnchihokkrrjosee')
-    # server =smtplib.SMTP('smtp.gmail.com',587)
-    # server.ehlo()
-    # server.starttls()
-    # server.ehlo()
-    # server.login('nevilbavarva477@gmail.com','tnchihokkrrjosee')
+    server =smtplib.SMTP('smtp.gmail.com',587)
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+    server.login('gamiviraj222002@gmail.com','tnchihokkrrjosee')
     email = CustomerEmail
     name = CustomerName
 
     subject ='Registration'
-    body= 'Dear ' + str(name) +' ,'+ '\n Thanks for you Registration in E-Pustakshala. Your account has been successfully created. \n Visit : e-pustakshala.herokuapp.com/contact for any query'
+    body= 'Dear ' + str(name) +' ,'+ '\n Thanks for you Registration in E-Pustakshala. Your account has been successfully created. \n Visit : e-pustakshala.herokuapp.com/contact for any query -From Viraj Gami' 
 
     msg=f"subject:{subject}\n\n{body}"
 
